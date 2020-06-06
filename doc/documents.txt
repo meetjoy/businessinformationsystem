@@ -1,2 +1,21 @@
 6/6/2020
 	Forked from myLib
+
+--How to install node on windows?
+install node v12.18.0 LTS & npm v6.14.4
+
+install git bash Git-2.26.2-64-bit
+
+$ sudo npm install express-generator -g
+@4.16.1 installed
+
+use express to install a sample projects
+$ express --view=pug
+
+sudo npm install -g nodemon
+2.0.4
+npm install --save-dev nodemon
+
+under project folder $ npm install mongoose
+MongoDB Community Server 4.2.7 2007R2Plus SSL
+Mongo Compass Community Edition Stable 1.21.2
