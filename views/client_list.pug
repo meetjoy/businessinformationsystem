@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+    - client_list.sort(function(a, b) {let textA = a.company_name.toUpperCase(); let textB = b.company_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+    table(id='product_css')
+      tr
+        th Company Name
+        th Person Name
+        th email
+        th Mobile
+        th Phone
+        th Fax
+        th Address
+        th Active
+        th Update date
+      each client in client_list
+        tr
+          td #{client.company_name} 
+          td #{client.person_name} 
+          td #{client.email} 
+          td #{client.mobile} 
+          td #{client.phone} 
+          td #{client.fax} 
+          td #{client.address} 
+          td #{client.active} 
+          td #{client.update_date_Aus} 

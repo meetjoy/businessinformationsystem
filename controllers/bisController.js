@@ -3,6 +3,7 @@
 // var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
 var Product = require('../models/product');
+var Client = require('../models/client');
 const { body,validationResult } = require('express-validator');
 
 var async = require('async');
@@ -12,34 +13,33 @@ exports.index = function(req, res) {
       product_count: function(callback) {
           Product.countDocuments({}, callback); // Pass an empty object as match condition to find all documents
       },
-      book_instance_count: function(callback) {
-          BookInstance.countDocuments({}, callback);
+      client_count: function(callback) {
+          Client.countDocuments({}, callback);
       },
-    //     // book_instance_available_count: function(callback) {
-    //     //     BookInstance.countDocuments({status:'Available'}, callback);
-    //     // },
-    //     // author_count: function(callback) {
-    //     //     Author.countDocuments({}, callback);
-    //     // },
-    //     // genre_count: function(callback) {
-    //     //     Genre.countDocuments({}, callback);
-    //     // }
-       }, function(err, results) {
-      res.render('index', { title: 'Safemaster: Business Information System Home', error: err, data: results}); });
+    }, function(err, results) {
+    res.render('index', { title: 'Safemaster: Business Information System Home', error: err, data: results}); });
   };
   
   // Display list of all Products.
 exports.product_list = function(req, res, next) {
-    Product.find({}, 'code description price_supply_only') //  
-      // .populate('author')
-      .exec(function (err, list_products) {
-        if (err) { return next(err); }
-        //Successful, so render
-        res.render('product_list', { title: 'Product List', product_list: list_products });
-      });
-  };
+  Product.find({}, 'code description price_supply_only comment') //  
+    // .populate('author')
+    .exec(function (err, list_products) {
+      if (err) { return next(err); }
+      //Successful, so render
+      res.render('product_list', { title: 'Product List', product_list: list_products });
+    });
+};
 
-
+ // Display list of all Clients.
+ exports.client_list = function(req, res, next) {
+  Client.find({}, 'company_name address person_name email mobile phone fax active update_date_Aus') //  
+    .exec(function (err, list_clients) {
+      if (err) { return next(err); }
+      //Successful, so render
+      res.render('client_list', { title: 'Client List', client_list: list_clients });
+    });
+};
 
 // // Display detail page for a specific book.
 // exports.book_detail = function(req, res, next) {

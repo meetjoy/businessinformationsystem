@@ -12,7 +12,7 @@
 
 #product_css td, #product_css th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 4px;
 }
 
 #product_css tr:nth-child(even){background-color: #f2f2f2;}

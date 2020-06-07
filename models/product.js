@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 var ProductSchema = new Schema({
   code: { type: String, required: true, max: 50 },
   description: { type: String, required: true, max: 500 },
-  price_supply_only: { type: Number, required: true, min: 0 } //,
+  price_supply_only: { type: Number, required: true, min: 0 },
+  comment: { type: String, max:200 }
   // update_date: { type: Date }
 });
 
