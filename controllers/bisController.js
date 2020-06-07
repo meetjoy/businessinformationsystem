@@ -1,19 +1,20 @@
 // var Book = require('../models/book');
 // var Author = require('../models/author');
 // var Genre = require('../models/genre');
-// var BookInstance = require('../models/bookinstance');
+var BookInstance = require('../models/bookinstance');
+var Product = require('../models/product');
 const { body,validationResult } = require('express-validator');
 
 var async = require('async');
 
-exports.index = function(req, res, err) {   
-    // async.parallel({
-    //     // book_count: function(callback) {
-    //     //     Book.countDocuments({}, callback); // Pass an empty object as match condition to find all documents of this collection
-    //     // },
-    //     // book_instance_count: function(callback) {
-    //     //     BookInstance.countDocuments({}, callback);
-    //     // },
+exports.index = function(req, res) {   
+    async.parallel({
+      product_count: function(callback) {
+          Product.countDocuments({}, callback); // Pass an empty object as match condition to find all documents
+      },
+      book_instance_count: function(callback) {
+          BookInstance.countDocuments({}, callback);
+      },
     //     // book_instance_available_count: function(callback) {
     //     //     BookInstance.countDocuments({status:'Available'}, callback);
     //     // },
@@ -23,45 +24,22 @@ exports.index = function(req, res, err) {
     //     // genre_count: function(callback) {
     //     //     Genre.countDocuments({}, callback);
     //     // }
-    // }, function(err, results) {
-      res.render('index', { title: 'Safemaster: Business Information System Home', error: err});
-    //   res.render('index', { title: 'Business Information System Home', error: err, data: results });
+       }, function(err, results) {
+      res.render('index', { title: 'Safemaster: Business Information System Home', error: err, data: results}); });
+  };
+  
+  // Display list of all Products.
+exports.product_list = function(req, res, next) {
+    Product.find({}, 'code description price_supply_only') //  
+      // .populate('author')
+      .exec(function (err, list_products) {
+        if (err) { return next(err); }
+        //Successful, so render
+        res.render('product_list', { title: 'Product List', product_list: list_products });
+      });
+  };
 
-    };
 
-    // async.parallel({
-    //     book_count: function(callback) {
-    //         Book.countDocuments({}, callback); // Pass an empty object as match condition to find all documents of this collection
-    //     },
-    //     book_instance_count: function(callback) {
-    //         BookInstance.countDocuments({}, callback);
-    //     },
-    //     book_instance_available_count: function(callback) {
-    //         BookInstance.countDocuments({status:'Available'}, callback);
-    //     },
-    //     author_count: function(callback) {
-    //         Author.countDocuments({}, callback);
-    //     },
-    //     genre_count: function(callback) {
-    //         Genre.countDocuments({}, callback);
-    //     }
-    // }, function(err, results) {
-    //     res.render('index', { title: 'Local Library Home', error: err, data: results });
-    // });
-// };
-
-// // Display list of all Books.
-// exports.book_list = function(req, res, next) {
-
-//     Book.find({}, 'title author')
-//       .populate('author')
-//       .exec(function (err, list_books) {
-//         if (err) { return next(err); }
-//         //Successful, so render
-//         res.render('book_list', { title: 'Book List', book_list: list_books });
-//       });
-      
-//   };
 
 // // Display detail page for a specific book.
 // exports.book_detail = function(req, res, next) {

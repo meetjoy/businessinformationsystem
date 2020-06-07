@@ -8,6 +8,10 @@ const bis_controller = require('../controllers/bisController.js');
 // const book_instance_controller = require('../controllers/bookinstanceController');
 
 router.get('/', bis_controller.index);
+router.get('/products', bis_controller.product_list);
+
+
+
 // router.get('/book/create', book_controller.book_create_get);
 // router.post('/book/create', book_controller.book_create_post);
 
