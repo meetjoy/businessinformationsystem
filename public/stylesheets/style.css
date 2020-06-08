@@ -4,6 +4,12 @@
   list-style: none;
 }
 
+
+ul li{
+  display: inline;
+  list-style-type: none;
+  padding: 5px 5px;}
+
 #product_css {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -20,8 +26,8 @@
 #product_css tr:hover {background-color: #ddd;}
 
 #product_css th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   text-align: left;
   background-color: #008000;
   color: white;
