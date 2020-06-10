@@ -10,6 +10,7 @@ const bis_controller = require('../controllers/bisController.js');
 router.get('/', bis_controller.index);
 router.get('/products', bis_controller.product_list);
 router.get('/clients', bis_controller.client_list);
+router.get('/quotes', bis_controller.quote_list);
 
 
 

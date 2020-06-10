@@ -4,6 +4,7 @@
 var BookInstance = require('../models/bookinstance');
 var Product = require('../models/product');
 var Client = require('../models/client');
+var Quote = require('../models/quote');
 const { body,validationResult } = require('express-validator');
 
 var async = require('async');
@@ -40,6 +41,19 @@ exports.product_list = function(req, res, next) {
       res.render('client_list', { title: 'Client List', client_list: list_clients });
     });
 };
+
+// Display list of all quotes.
+exports.quote_list = function(req, res, next) {
+  Quote.find({}, 'pro_no quote_no name address value prepared_by reviewed_by sent_date status due_date') //  
+    .exec(function (err, list_quotes) {
+      if (err) { return next(err); }
+      //Successful, so render
+      res.render('quote_list', { title: 'Quote List', quote_list: list_quotes });
+    });
+};
+
+
+
 
 // // Display detail page for a specific book.
 // exports.book_detail = function(req, res, next) {
