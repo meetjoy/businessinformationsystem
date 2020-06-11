@@ -12,7 +12,6 @@ block content
       th Value
       th Prepared
       th Reviewed
-      th Status
     each quote in quote_list
       tr
         td #{quote.quote_no} 
@@ -21,4 +20,3 @@ block content
         td $#{quote.value} 
         td #{quote.prepared_by} 
         td #{quote.reviewed_by} 
-        td #{quote.status} 
