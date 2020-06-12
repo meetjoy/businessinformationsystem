@@ -44,7 +44,7 @@ exports.product_list = function(req, res, next) {
 
 // Display list of all quotes.
 exports.quote_list = function(req, res, next) {
-  Quote.find({}, 'pro_no quote_no name address value prepared_by reviewed_by sent_date status due_date note') //  
+  Quote.find({}, 'pro_no quote_no name address value prepared_by reviewed_by sent_date_Aus status due_date_Aus note') //  
     .exec(function (err, list_quotes) {
       if (err) { return next(err); }
       //Successful, so render
