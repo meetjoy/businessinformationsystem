@@ -6,12 +6,13 @@ block content
   - quote_list.sort(function(a, b) {let A = a.pro_no; let B = b.pro_no; return (A > B) ? -1 : (A < B) ? 1 : 0;});
   table(id='product_css')
     tr
-      th Quote Number
+      th Number
       th Project Name
       th Address
       th Value
-      th Prepared
-      th Reviewed
+      th By
+      //- th Reviewed
+      th Note
     each quote in quote_list
       tr
         td #{quote.quote_no} 
@@ -19,4 +20,5 @@ block content
         td #{quote.address} 
         td $#{quote.value} 
         td #{quote.prepared_by} 
-        td #{quote.reviewed_by} 
+        //- td #{quote.reviewed_by} 
+        td #{quote.note} 

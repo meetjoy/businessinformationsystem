@@ -16,7 +16,8 @@ var QuoteSchema = new Schema({
   due_date: { type: Date },
   receive_date: { type: Date },
   follow_date: { type: Date },
-  builder1: { type: String, max: 200 }
+  builder1: { type: String, max: 200 },
+  note: { type: String, max: 20 }
 });
 
 // ProductSchema.virtual('url').get(function() {
