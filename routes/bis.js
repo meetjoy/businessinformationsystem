@@ -13,7 +13,6 @@ router.get('/clients', bis_controller.client_list);
 router.get('/quotes', bis_controller.quote_list);
 
 
-
 // router.get('/book/create', book_controller.book_create_get);
 // router.post('/book/create', book_controller.book_create_post);
 

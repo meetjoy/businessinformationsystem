@@ -2,8 +2,10 @@ extends layout
 
 block content
   //- h1= title
-  
   - client_list.sort(function(a, b) {let textA = a.company_name.toUpperCase(); let textB = b.company_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+  input(type='text', id='search_content')
+  button(type='button', id='search_button') Search
+  hr
   table(id='product_css')
     tr
       th Company Name
@@ -26,3 +28,25 @@ block content
         td #{client.address} 
         td #{client.active} 
         td #{client.update_date_Aus} 
+
+  script(type='text/javascript').
+    $(document).ready(function() {
+      const content = $('#search_content').val();
+
+      //- client_list.forEach(function(client, index, array) {
+      //-   console.log(client, index)
+      //- })
+
+      //- for let client in client_list {
+      //-   alert(client.company_name);
+      //-   if client.company_name.includes(content)
+      //-     alert(client.company_name);
+      //- }
+
+      //test
+      $('#search_button').click(function(){
+        const content = $('#search_content').val();
+        alert(content)
+      });
+
+    });
