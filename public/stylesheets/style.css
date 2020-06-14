@@ -1,33 +1,27 @@
-.sidebar-nav {
-  margin-top: 20px;
-  padding: 0;
-  list-style: none;
-}
-
 ul li{
   display: inline;
   list-style-type: none;
   padding: 5px 5px;}
 
-#product_css {
+.default_table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#product_css td, #product_css th {
+.default_table td, .default_table th {
   border: 1px solid #ddd;
   padding: 4px;
 }
 
-#product_css tr:nth-child(even){background-color: #f2f2f2;}
+.default_table tr:nth-child(even){background-color: #f2f2f2;}
 
-#product_css tr:hover {background-color: #ddd;}
+.default_table tr:hover {background-color: #ddd;}
 
-#product_css th {
+.default_table th {
   padding-top: 4px;
   padding-bottom: 4px;
   text-align: left;
-  background-color: #008000;
+  background-color: #ff9966;
   color: white;
 }

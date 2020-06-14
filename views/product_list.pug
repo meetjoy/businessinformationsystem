@@ -3,7 +3,7 @@ extends layout
 block content
   //- h1= title
   - product_list.sort(function(a, b) {let textA = a.code.toUpperCase(); let textB = b.code.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
-  table(id='product_css')
+  table(id='product_table' class='default_table')
     tr
       th CODE
       th Description

@@ -34,7 +34,7 @@ exports.product_list = function(req, res, next) {
 
  // Display list of all Clients.
  exports.client_list = function(req, res, next) {
-  Client.find({}, 'company_name address person_name email mobile phone fax active update_date_Aus') //  
+  Client.find({}, 'company_name address person_name email mobile phone fax active update_date_Aus update_date') //  
     .exec(function (err, list_clients) {
       if (err) { return next(err); }
       //Successful, so render

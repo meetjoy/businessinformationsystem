@@ -4,41 +4,33 @@ html(lang='en')
     title= title
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='https://code.jquery.com/jquery-3.5.1.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div(class='container-fluid')
-      div(class='row')
-        //- div(class='col-sm-2')
-        div(class='row')
-          //- block sidebar
-            //- ul(class='sidebar-nav')
-          ul
-            li 
-              a(href='/bis') HOME
-            li 
-              a(href='/bis/products') PRODUCTS
-            li 
-              a(href='/bis/clients') CLIENTS
-            li 
-              a(href='/bis/quotes') QUOTES
-            li 
-              a(href='/catalog/author/create') Create new project
-            li 
-              a(href='/catalog/author/create') Make new quote
-            li 
-              a(href='/catalog/genre/create') Chase orders
-            li 
-              a(href='http://127.0.0.1:8887') try local folder
-            li 
-              a(href='/catalog/bookinstance/create') Components
-            li 
-              a(href='/catalog/bookinstance/create') Raw material
-            li 
-              a(href='/catalog/bookinstance/create') Calculators
-                
-        div(class='row', style={ padding: '25px'})
-          block content
+    div
+      ul
+        li 
+          a(href='/bis') HOME
+        li 
+          a(href='/bis/products') PRODUCTS
+        li 
+          a(href='/bis/clients') CLIENTS
+        li 
+          a(href='/bis/quotes') QUOTES
+        li 
+          a(href='/catalog/author/create') Create new project
+        li 
+          a(href='/catalog/author/create') Make new quote
+        li 
+          a(href='/catalog/genre/create') Chase orders
+        li 
+          a(href='http://127.0.0.1:8887') try local folder
+        li 
+          a(href='/catalog/bookinstance/create') Components
+        li 
+          a(href='/catalog/bookinstance/create') Raw material
+        li 
+          a(href='/catalog/bookinstance/create') Calculators
+            
+    div(style={ padding: '15px'})
+      block content
