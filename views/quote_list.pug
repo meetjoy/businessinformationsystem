@@ -6,14 +6,14 @@ block content
   //- Lable() 
   | 
   input(type='text' id='searchme' 
-    placeholder="Search Option 1: Key in keywords of project name or address to search. Empty and hit ENTER to show all quotes"
-    style={width: '880px', display:'block'}) 
+    placeholder="Search Option 1: Key in keywords of project name or address to search, use space to seperate multi-items, Empty and hit ENTER to show all quotes"
+    style={width: '950px', display:'block'}) 
   | 
   //- Lable() Search Option 2
   |
   input(type='text' id='use_number_searchme' 
-    placeholder="Search Option 2: Key in the project number (number only, like 18526) to search. Empty and hit ENTER to show all quotes"
-    style={width: '880px' }) 
+    placeholder="Search Option 2: Key in the project number (number only, like 18526) to search, use space to seperate multi-items, Empty and hit ENTER to show all quotes"
+    style={width: '950px' }) 
 
   table(id='quote_table' class='default_table')
     tr
@@ -29,7 +29,7 @@ block content
         td #{quote.quote_no} 
         td #{quote.name} 
         td #{quote.address} 
-        td $#{quote.value} 
+        td $#{quote.value.toLocaleString('en', {useGrouping:true})} 
         td #{quote.prepared_by} 
         td #{quote.note} 
         td #{quote.due_date_Aus} 
@@ -74,12 +74,10 @@ block content
         $("td").detach();
         quote_list.forEach(function(quote, index, array) {
           let i = 0;
-          let current_quote = (quote.quote_no).toUpperCase();
+          let current_quote = quote.quote_no;
           for (; i < searchstr.length ; i++){
-            if (!current_quote.includes(searchstr[i].toUpperCase())) break;
-          }
-          if (i === searchstr.length){
-            insert_one_row(quote);
+            if (current_quote.includes(searchstr[i]))  
+              insert_one_row(quote);
           }
         });
       }
@@ -111,7 +109,7 @@ block content
         row.append($("<td/>").text(quote.quote_no));
         row.append($("<td/>").text(quote.name));
         row.append($("<td/>").text(quote.address));
-        row.append($("<td/>").text(quote.value));
+        row.append($("<td/>").text('$' + quote.value.toLocaleString('en', {useGrouping:true})));
         row.append($("<td/>").text(quote.prepared_by));
         row.append($("<td/>").text(quote.note));
         row.append($("<td/>").text(quote.due_date_Aus));
