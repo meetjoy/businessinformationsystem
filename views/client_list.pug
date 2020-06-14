@@ -8,7 +8,7 @@ block content
   Lable() Search Bar
   | 
   input(type='text' id='searchme' 
-    placeholder="key in name of person or/and company, and/or email then press ENTRE, use space to seperate multi-items, example: Pindan Jim Green"
+    placeholder="key in name of person or/and company, and/or email then press ENTER, use space to seperate multi-items, example: Pindan Jim Green"
     style={width: '880px' }) 
   //background: '#99ff33'
   | 
@@ -43,7 +43,6 @@ block content
         $("td").detach();
         for(let i = 0; i < client_list.length; i++){
           insert_one_row(client_list[i]);
-          console.log(client_list[i]);
         }
         return;
       }
@@ -58,7 +57,6 @@ block content
       function search_button(){
         const searchme = $('#searchme').val();
         const searchstr = searchme.split(/ +/);
-        console.log(client_list);
         if (searchstr[0] === "" ) {
           show_all();
           return;

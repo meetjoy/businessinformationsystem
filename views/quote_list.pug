@@ -3,6 +3,18 @@ extends layout
 block content
   - quote_list.sort(function(a, b) {let A = a.pro_no; let B = b.pro_no; return (A > B) ? -1 : (A < B) ? 1 : 0;});
 
+  //- Lable() 
+  | 
+  input(type='text' id='searchme' 
+    placeholder="Search Option 1: Key in keywords of project name or address to search. Empty and hit ENTER to show all quotes"
+    style={width: '880px', display:'block'}) 
+  | 
+  //- Lable() Search Option 2
+  |
+  input(type='text' id='use_number_searchme' 
+    placeholder="Search Option 2: Key in the project number (number only, like 18526) to search. Empty and hit ENTER to show all quotes"
+    style={width: '880px' }) 
+
   table(id='quote_table' class='default_table')
     tr
       th Number
@@ -21,4 +33,90 @@ block content
         td #{quote.prepared_by} 
         td #{quote.note} 
         td #{quote.due_date_Aus} 
+
+  script(type='text/javascript').
+    $(document).ready(function() {
+      //- var quote_list = JSON.parse('!{JSON.stringify(quote_list)}');
+      var quote_list = !{JSON.stringify(quote_list)};
+
+      function show_all(){
+        $("td").detach();
+        for(let i = 0; i < quote_list.length; i++){
+          insert_one_row(quote_list[i]);
+        }
+        return;
+      }
+      
+      $("#searchme").on('keyup', function (e) {
+        if (e.keyCode === 13) {
+            search_button();
+        }
+        return;
+      });
+
+      $("#use_number_searchme").on('keyup', function (e) {
+        if (e.keyCode === 13) {
+            use_number_searchme();
+        }
+        return;
+      });
+      
+      function use_number_searchme(){
+        const use_number_searchme_str = $('#use_number_searchme').val();
+        const searchstr = use_number_searchme_str.split(/ +/);
+        console.log(searchstr)
+        //- console.log(quote_list);
+        if (searchstr[0] === "" ) {
+          show_all();
+          return;
+        }
         
+        $("td").detach();
+        quote_list.forEach(function(quote, index, array) {
+          let i = 0;
+          let current_quote = (quote.quote_no).toUpperCase();
+          for (; i < searchstr.length ; i++){
+            if (!current_quote.includes(searchstr[i].toUpperCase())) break;
+          }
+          if (i === searchstr.length){
+            insert_one_row(quote);
+          }
+        });
+      }
+
+      function search_button(){
+        const searchme = $('#searchme').val();
+        const searchstr = searchme.split(/ +/);
+        //- console.log(quote_list);
+        if (searchstr[0] === "" ) {
+          show_all();
+          return;
+        }
+        
+        $("td").detach();
+        quote_list.forEach(function(quote, index, array) {
+          let i = 0;
+          let current_quote = (quote.name + quote.address).toUpperCase();
+          for (; i < searchstr.length ; i++){
+            if (!current_quote.includes(searchstr[i].toUpperCase())) break;
+          }
+          if (i === searchstr.length){
+            insert_one_row(quote);
+          }
+        });
+      }
+
+      function insert_one_row(quote){
+        var row = $('<tr/>');
+        row.append($("<td/>").text(quote.quote_no));
+        row.append($("<td/>").text(quote.name));
+        row.append($("<td/>").text(quote.address));
+        row.append($("<td/>").text(quote.value));
+        row.append($("<td/>").text(quote.prepared_by));
+        row.append($("<td/>").text(quote.note));
+        row.append($("<td/>").text(quote.due_date_Aus));
+        $("#quote_table").append(row);
+      }
+
+
+    });
