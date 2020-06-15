@@ -29,10 +29,10 @@ block content
         td #{quote.quote_no} 
         td #{quote.name} 
         td #{quote.address} 
-        td $#{quote.value.toLocaleString('en', {useGrouping:true})} 
+        td $#{(quote.value)}
         td #{quote.prepared_by} 
         td #{quote.note} 
-        td #{quote.due_date_Aus} 
+        //- td #{quote.due_date_Aus} 
 
   script(type='text/javascript').
     $(document).ready(function() {
@@ -109,12 +109,13 @@ block content
         row.append($("<td/>").text(quote.quote_no));
         row.append($("<td/>").text(quote.name));
         row.append($("<td/>").text(quote.address));
-        row.append($("<td/>").text('$' + quote.value.toLocaleString('en', {useGrouping:true})));
+        row.append($("<td/>").text('$' + (quote.value === undefined ? "0" : quote.value)));
         row.append($("<td/>").text(quote.prepared_by));
         row.append($("<td/>").text(quote.note));
-        row.append($("<td/>").text(quote.due_date_Aus));
+        //- row.append($("<td/>").text(quote.due_date_Aus));
         $("#quote_table").append(row);
       }
+      //.toLocaleString('en', {useGrouping:true})
 
 
     });
