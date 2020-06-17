@@ -8,9 +8,9 @@ var ClientSchema = new Schema({
   address: { type: String, max: 500 },
   person_name: { type: String, required: true, max: 50 },
   email: { type: String, max: 50 },
-  mobile: { type: String, max: 20 },
-  phone: { type: String, max: 20 },
-  fax: { type: String, max: 20 },
+  mobile: { type: String, max: 13 },
+  phone: { type: String, max: 12 },
+  fax: { type: String, max: 13 },
   active: { type: String, max: 20 },
   update_date: { type: Date }
 });
